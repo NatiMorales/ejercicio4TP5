@@ -9,6 +9,14 @@ const mostrarFechaHora = () => {
     let segundos = fecha.getSeconds();
     let ampm;
 
+    if(hora < 12){
+        ampm = "AM";
+    } else {
+        ampm = "PM";
+    }
+    if(hora > 12){
+        hora = hora - 12;
+    }
     if(hora < 10 ){
         hora = "0"+hora;
     }
@@ -18,15 +26,6 @@ const mostrarFechaHora = () => {
     if(segundos < 10 ){
         segundos = "0"+segundos;
     }
-    if(hora < 12){
-        ampm = "AM";
-    } else {
-        ampm = "PM";
-    }
-    if(hora > 12){
-        hora = hora - 12;
-    }
-
 
     let parrafoFecha = document.querySelector("#fecha");
     parrafoFecha.innerHTML = `${diasSemanas[numeroDia]} ${fecha.getDate()} de ${mesesAño[numeroMes]} del ${fecha.getFullYear()}`;
@@ -45,6 +44,4 @@ const mostrarFechaHora = () => {
     
 }
 
-
-// setInterval
-const idInterval = setInterval(mostrarFechaHora,1000);
+setInterval(mostrarFechaHora,1000);
